@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment, useState } from "react";
+import illustration from "./img/Weather-rafiki.svg";
+import Header from "./components/Header";
+import styled from "styled-components";
+
+const Image = styled.img`
+    max-width: 100%;
+    display: block;
+    margin: 50px auto;
+    transform: scale(1.5);
+
+    @media (min-width: 768px) {
+        max-width: 60%;
+        margin: 10px auto;
+        transform: none;
+        transform: scale(1.2);
+    }
+`;
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [city, setCity] = useState("");
+
+    return (
+        <Fragment>
+            <Header
+                title="Weather App"
+                setCity={setCity}
+            />
+
+            <div className="form-container">
+                <Image
+                    src={illustration}
+                    alt="Weather Illustration"
+                    className="weather-illustration"
+                />
+            </div>
+        </Fragment>
+    );
 }
 
 export default App;

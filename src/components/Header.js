@@ -53,7 +53,7 @@ const SearchIcon = styled.i`
     }
 `;
 
-function Header({setCity}) {
+function Header({setCity, setGetApi}) {
     const [search, setSearch] = useState("");
     const [error, setError] = useState("");
 
@@ -67,9 +67,13 @@ function Header({setCity}) {
             return;
 		}
 		setError(false)
-		
+	
 		setCity(search)
-    }
+
+		setGetApi(true)
+
+		setSearch('')
+	}
 
     return (
         <Fragment>
@@ -79,7 +83,8 @@ function Header({setCity}) {
                     <SearchInput
                         type="text"
                         placeholder="Search city"
-                        onChange={handleChange}
+						onChange={handleChange}
+						value={search}
                     />
                     <SearchIcon
                         className="fas fa-search"

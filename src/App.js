@@ -18,13 +18,29 @@ const Image = styled.img`
 `;
 
 function App() {
-    const [city, setCity] = useState("");
+	const [city, setCity] = useState('');
+	const [getApi, setGetApi] = useState(false)
+	const [weather, setWeather] = useState([])
+	
+	const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=fa17ec1c7d684c94614d3a196892c3d0`;
+	
+	if(getApi){
+		async function getWeather (){
+			const response = await fetch(url)
+			const data = await response.json()
+			setGetApi(false)
+			setWeather([...weather, data])
+		}
+		getWeather()
+	}
+	
 
     return (
         <Fragment>
             <Header
-                title="Weather App"
-                setCity={setCity}
+				title="Weather App"
+				setCity={setCity}
+				setGetApi={setGetApi}
             />
 
             <div className="form-container">

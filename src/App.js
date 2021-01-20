@@ -18,31 +18,37 @@ const Image = styled.img`
 `;
 
 function App() {
-	const [city, setCity] = useState('');
-	const [getApi, setGetApi] = useState(false)
-	const [weather, setWeather] = useState([])
-	
-	const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=fa17ec1c7d684c94614d3a196892c3d0`;
-	
-	if(getApi){
-		async function getWeather (){
-			const response = await fetch(url)
-			const data = await response.json()
-			setGetApi(false)
-			setWeather([...weather, data])
-		}
-		getWeather()
-	}
-	
+    const [city, setCity] = useState("");
+    const [getApi, setGetApi] = useState(false);
+    const [weather, setWeather] = useState([]);
+    const [error, setError] = useState(false);
+
+    const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=fa17ec1c7d684c94614d3a196892c3d0`;
+
+    if (getApi) {
+        async function getWeather() {
+            const response = await fetch(url);
+            const data = await response.json();
+            setGetApi(false);
+            if (data.cod === "404") {
+                setError(true);
+            } else {
+				setError(false)
+                setWeather([...weather, data]);
+            }
+        }
+        getWeather();
+    }
 
     return (
         <Fragment>
             <Header
-				title="Weather App"
-				setCity={setCity}
-				setGetApi={setGetApi}
+                title="Weather App"
+                setCity={setCity}
+                setGetApi={setGetApi}
             />
-
+			{error ? <p className="error">There was an error. Try again</p> : null}
+			
             <div className="form-container">
                 <Image
                     src={illustration}

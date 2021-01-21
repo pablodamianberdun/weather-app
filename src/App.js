@@ -9,8 +9,7 @@ const Background = styled.div`
     background-image: url(${background});
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-position: center;
-    background-size: auto;
+    background-size: cover;
 `;
 
 function App() {

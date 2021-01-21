@@ -13,14 +13,20 @@ html {
     box-sizing: inherit;
 }
 
-.form-container {
-    max-width: 50%;
-    margin: 0 auto;
+.container {
+    max-width: 70%;
+	margin: 0 auto;
+}
+
+.cards-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
 }
 
 .error {
 	background-color: #DF1515;
 	padding: 10px;
 	color: white;
-	
 }

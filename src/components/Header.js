@@ -1,9 +1,10 @@
 import React, { Fragment, useState } from "react";
 import styled from "styled-components";
+import shortid from 'shortid'
 
 const Title = styled.h1`
     color: white;
-    background-color: #0868cd;
+    background-color: rgba(8, 104, 205, 0.8);
     font-family: "Lobster", cursive;
     margin: 0;
     padding: 10px 20px;
@@ -54,15 +55,21 @@ const SearchIcon = styled.i`
 `;
 
 function Header({setCity, setGetApi}) {
-    const [search, setSearch] = useState("");
+    const [search, setSearch] = useState({
+		name:'',
+		id:''
+	});
     const [error, setError] = useState("");
 
     function handleChange(e) {
-        setSearch(e.target.value);
+        setSearch({
+			name: e.target.value,
+			id: shortid.generate()
+		});
     }
 
     function saveCity() {
-        if (search.trim() === "") {
+        if (search.name.trim() === "") {
             setError(true);
             return;
 		}
@@ -72,7 +79,10 @@ function Header({setCity, setGetApi}) {
 
 		setGetApi(true)
 
-		setSearch('')
+		setSearch({
+			name: '',
+			id: ''
+		})
 	}
 
     return (
@@ -84,7 +94,7 @@ function Header({setCity, setGetApi}) {
                         type="text"
                         placeholder="Search city"
 						onChange={handleChange}
-						value={search}
+						value={search.name}
                     />
                     <SearchIcon
                         className="fas fa-search"

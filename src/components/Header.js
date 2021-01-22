@@ -6,7 +6,8 @@ const Title = styled.h1`
     color: white;
     background-color: rgba(8, 104, 205, 0.8);
     font-family: "Lobster", cursive;
-    margin: 0;
+	margin: 0;
+	margin-bottom: 30px;
     padding: 10px 20px;
     text-align: center;
     display: flex;

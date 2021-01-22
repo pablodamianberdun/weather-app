@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import Header from "./components/Header";
 import WeatherCard from "./components/WeatherCard";
+import Footer from './components/Footer'
 import styled from "styled-components";
-import background from './img/clouds-2329680_1920.jpg'
+import background from './img/sky-50e9d54143_1280.jpg'
 
-const Background = styled.div`
-    min-height: 100vh;
+const Main = styled.div ` 
+	min-height: 100vh;
     background-image: url(${background});
     background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-`;
+	background-attachment: fixed;
+	background-position: center;
+	background-size: cover;
+	position: relative;
+`
 
 function App() {
     const [city, setCity] = useState({});
@@ -37,7 +40,7 @@ function App() {
     }
 
     return (
-        <Background>
+        <Main>
             <Header
                 title="Weather App"
                 setCity={setCity}
@@ -57,7 +60,8 @@ function App() {
                     ))}
                 </div>
             ) : null}
-        </Background>
+			<Footer/>
+        </Main>
     );
 }
 

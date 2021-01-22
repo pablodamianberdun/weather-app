@@ -5,8 +5,10 @@ const Card = styled.div`
     color: white;
     background-color: rgba(8, 104, 205, 0.5);
     text-align: center;
-    padding: 30px;
-    margin: 30px 10px;
+	padding: 30px;
+	margin-right: auto;
+	margin-left: auto;
+    margin-bottom: 60px;
     width: 100%;
     height: 20rem;
     border-radius: 10px;

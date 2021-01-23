@@ -32,7 +32,6 @@ const SearchInput = styled.input`
     display: block;
 	width: 70%;
 	height: 20px;
-	text-align: center;
     padding: 10px;
     background-color: #1577df;
     color: white;
@@ -95,6 +94,11 @@ function Header({setCity, setGetApi}) {
                         type="text"
                         placeholder="Search city"
 						onChange={handleChange}
+						onKeyDown={e => {
+							if(e.key === "Enter") {
+								saveCity()
+							}
+						}}
 						value={search.name}
                     />
                     <SearchIcon

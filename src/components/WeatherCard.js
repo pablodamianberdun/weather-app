@@ -13,17 +13,37 @@ const Card = styled.div`
     height: 20rem;
     border-radius: 10px;
 
+	display: flex;
+	flex-direction: column;
+	align-items:center;	
+	justify-content: center;
+
     @media (min-width: 768px) {
         width: 30%;
     }
 `;
+
+const CityName = styled.h1 ` 
+	display: block;
+	font-size: 8vw;
+	margin: 0;
+
+	@media (min-width: 768px) {
+		font-size: 3vw;
+	}
+
+	@media (min-width: 900px) {
+		font-size: 2.5vw;
+	}
+
+`
 
 function WeatherCard({ weatherCity }) {
     const { main, name } = weatherCity;
 
     return (
         <Card>
-            <h1>{name}</h1>
+            <CityName>{name}</CityName>
             <h2>{main.temp} ºC</h2>
             <p>Min: {main.temp_min} ºC</p>
             <p>Max: {main.temp_max} ºC</p>

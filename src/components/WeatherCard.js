@@ -68,7 +68,7 @@ function WeatherCard(props) {
         };
 
         getCardImage();
-    }, []);
+    }, [name, weather]);
 
     return (
         <Card>

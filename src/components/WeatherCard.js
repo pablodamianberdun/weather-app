@@ -3,9 +3,12 @@ import styled from "styled-components";
 import axios from "axios";
 
 const Card = styled.div`
+	/* border: solid 4px green; */
     text-align: center;
     margin: 5px;
-    height: auto;
+
+	height: 400px;
+	width: 300px;
 
     display: flex;
     flex-direction: column;
@@ -18,19 +21,22 @@ const Card = styled.div`
 `;
 
 const BACKGROUND = styled.div`
+	/* border: solid 2px blue; */
     position: relative;
-    height: auto;
-
+	height: 100%;
+	width: 100%;
     img {
-        border-radius: 10px;
-        width: 100%;
+		width: 100%;
+  		height:100%;
+		size: cover;
         filter: brightness(0.4);
     }
 `;
 const WEATHERDATA = styled.div`
+	/* border: red solid 1px; */
     position: absolute;
-    height: auto;
 	color: white;
+	max-width: 300px;
 
     h1 {
         display: block;
@@ -47,9 +53,7 @@ const WEATHERDATA = styled.div`
     }
 
     img {
-        height: 100%;
-        width: 100%auto;
-        size: cover;	
+        max-width: 100%;	
     }
 `;
 
@@ -73,7 +77,7 @@ function WeatherCard(props) {
     return (
         <Card>
             <BACKGROUND>
-                <img src={urlImg} alt="background city"/>
+				<img src={urlImg} alt=""/>
             </BACKGROUND>
             <WEATHERDATA>
                 <h1>{name}</h1>

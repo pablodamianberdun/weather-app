@@ -16,6 +16,7 @@ html {
 .container {
     max-width: 70%;
 	margin: 0 auto;
+	min-height: 80vh;
 }
 
 .cards-container {

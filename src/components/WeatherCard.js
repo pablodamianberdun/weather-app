@@ -1,12 +1,12 @@
-import React, { useState, useEffect} from "react";
+import React from "react";
 import styled from "styled-components";
-import axios from "axios";
+import useCardBackground from "../hooks/useCardBackground.jsx"
 
 const Card = styled.div`
 	/* border: solid 4px green; */
     text-align: center;
     margin: 5px;
-
+	
 	height: 400px;
 	width: 300px;
 
@@ -26,6 +26,7 @@ const BACKGROUND = styled.div`
 	height: 100%;
 	width: 100%;
     img {
+		border-radius: 10px;
 		width: 100%;
   		height:100%;
 		size: cover;
@@ -59,25 +60,13 @@ const WEATHERDATA = styled.div`
 
 function WeatherCard(props) {
     const { main, name, weather } = props.weatherCity;
-    const [urlImg, setUrlImg] = useState("");
 
-    useEffect(() => {
-        const getCardImage = async () => {
-            const url = `https://pixabay.com/api/?key=19949153-2db7b3c8211ebbbd16f59e64d&q=${name}&orientation=vertical&image_type=photo&pretty=true`;
-            const response = await axios.get(url);
-            const links = response.data.hits;
-            const num = Math.floor(Math.random() * links.length);
-            const link = links[num];
-            setUrlImg(link.largeImageURL);
-        };
-
-        getCardImage();
-    }, [name, weather]);
-
+	const [img, BackgroundImg] = useCardBackground("", name)
+    
     return (
         <Card>
             <BACKGROUND>
-				<img src={urlImg} alt=""/>
+				<BackgroundImg/>
             </BACKGROUND>
             <WEATHERDATA>
                 <h1>{name}</h1>

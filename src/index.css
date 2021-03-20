@@ -31,3 +31,16 @@ html {
 	padding: 10px;
 	color: white;
 }
+
+body {
+	min-height: 100vh;
+	background: rgba(34,42,59,1);
+	background: -moz-linear-gradient(top, rgba(34,42,59,1) 17%, rgba(39,46,62,1) 28%, rgba(69,73,79,1) 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(17%, rgba(34,42,59,1)), color-stop(28%, rgba(39,46,62,1)), color-stop(100%, rgba(69,73,79,1)));
+	background: -webkit-linear-gradient(top, rgba(34,42,59,1) 17%, rgba(39,46,62,1) 28%, rgba(69,73,79,1) 100%);
+	background: -o-linear-gradient(top, rgba(34,42,59,1) 17%, rgba(39,46,62,1) 28%, rgba(69,73,79,1) 100%);
+	background: -ms-linear-gradient(top, rgba(34,42,59,1) 17%, rgba(39,46,62,1) 28%, rgba(69,73,79,1) 100%);
+	background: linear-gradient(to bottom, rgba(34,42,59,1) 17%, rgba(39,46,62,1) 28%, rgba(69,73,79,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#222a3b', endColorstr='#45494f', GradientType=0 );
+	background-repeat: no-repeat;
+}

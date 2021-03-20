@@ -4,7 +4,7 @@ import shortid from 'shortid'
 
 const Title = styled.h1`
     color: white;
-    background-color: rgba(8, 104, 205, 0.8);
+    background-color: #222a3b;
     font-family: "Lobster", cursive;
 	margin: 0;
 	margin-bottom: 30px;
@@ -17,7 +17,7 @@ const Title = styled.h1`
 `;
 
 const InputWrapper = styled.div`
-    background-color: #1577df;
+    background-color: #45494f;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -33,7 +33,7 @@ const SearchInput = styled.input`
 	width: 70%;
 	height: 20px;
     padding: 10px;
-    background-color: #1577df;
+    background-color: #45494f;
     color: white;
     border: none;
 

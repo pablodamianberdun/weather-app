@@ -38,8 +38,13 @@ const CityName = styled.h1 `
 
 `
 
+const IMG = styled.img`
+	width: 30%;
+`
+
 function WeatherCard({ weatherCity }) {
-    const { main, name } = weatherCity;
+    const { main, name, weather } = weatherCity;
+	console.log(weatherCity)
 
     return (
         <Card>
@@ -47,6 +52,8 @@ function WeatherCard({ weatherCity }) {
             <h2>{main.temp} ºC</h2>
             <p>Min: {main.temp_min} ºC</p>
             <p>Max: {main.temp_max} ºC</p>
+			<IMG src={`http://openweathermap.org/img/wn/${weather[0].icon}@2x.png`} alt={weather[0].description}/>
+			<p style={{"margin": 0}}>{weather[0].main}</p>
         </Card>
     );
 }

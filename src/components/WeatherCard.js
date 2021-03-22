@@ -3,7 +3,7 @@ import styled from "styled-components";
 import useCardBackground from "../hooks/useCardBackground.jsx"
 
 const Card = styled.div`
-	/* border: solid 4px green; */
+	/* border: solid 4px blue; */
     text-align: center;
     margin: 5px;
 	
@@ -39,7 +39,9 @@ const WEATHERDATA = styled.div`
 	color: white;
 	max-width: 300px;
 
+
     h1 {
+		color: white;
         display: block;
         font-size: 8vw;
         margin: 0;
@@ -53,8 +55,13 @@ const WEATHERDATA = styled.div`
         }
     }
 
+	h2{
+		color: white;
+	}
+
     img {
-        max-width: 100%;	
+        max-width: 100%;
+		margin: 0 auto;
     }
 `;
 

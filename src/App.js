@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import Header from "./components/Header";
-import WeatherCard from "./components/WeatherCard";
+import CardsCarousel from "./components/CardsCarousel"
 
 
 function App() {
@@ -38,17 +38,8 @@ function App() {
                 <p className="error">There was an error. Try again</p>
             ) : null}
 
-            {weather.length !== 0 ? (
-                <div className="container cards-container">
-                    {weather.map((weatherCity) => (
-                        <WeatherCard
-                            key={weatherCity.id}
-                            weatherCity={weatherCity}
-							bgColor="red"
-                        />
-                    ))}
-                </div>
-            ) : null}
+			<CardsCarousel weather={weather}/>
+
         </Fragment>
     );
 }

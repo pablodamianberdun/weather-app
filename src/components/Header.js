@@ -1,112 +1,56 @@
 import React, { Fragment, useState } from "react";
-import styled from "styled-components";
-import shortid from 'shortid'
+import { LOGO } from "../styles/Header.styled";
+import { FormControl, Button, Navbar, Form } from "react-bootstrap";
 
-const Title = styled.h1`
-    color: white;
-    background-color: #222a3b;
-    font-family: "Lobster", cursive;
-	margin: 0;
-	margin-bottom: 30px;
-    padding: 10px 20px;
-    text-align: center;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: nowrap;
-`;
+function Header({ setCity, setGetApi }) {
 
-const InputWrapper = styled.div`
-    background-color: #45494f;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 20px;
-    padding: 5px;
-    max-width: 60%;
-`;
-
-const SearchInput = styled.input`
-    font-family: "Open Sans", sans-serif;
-    font-size: 16px;
-    display: block;
-	width: 70%;
-	height: 20px;
-    padding: 10px;
-    background-color: #45494f;
-    color: white;
-    border: none;
-
-    &::placeholder {
-        color: white;
-    }
-
-    &:focus {
-        outline: none;
-    }
-`;
-
-const SearchIcon = styled.i`
-    margin-right: 5px;
-    font-size: 20px;
-    &:hover {
-        cursor: pointer;
-    }
-`;
-
-function Header({setCity, setGetApi}) {
-    const [search, setSearch] = useState({
-		name:'',
-		id:''
-	});
-    const [error, setError] = useState("");
+    const [search, setSearch] = useState("");
+    const [error, setError] = useState(false);
+	const [expandNav, setExpandNav] = useState(false)
 
     function handleChange(e) {
-        setSearch({
-			name: e.target.value,
-			id: shortid.generate()
-		});
+        setSearch(e.target.value)
     }
 
-    function saveCity() {
-        if (search.name.trim() === "") {
+    function handleSubmit(e) {
+		e.preventDefault()
+        if (search.trim() === "") {
             setError(true);
             return;
-		}
-		setError(false)
-	
-		setCity(search)
+        }
+        setError(false);
+        setCity(search);
+        setGetApi(true);
+        setSearch("");
+		setExpandNav(false)
+    }
 
-		setGetApi(true)
-
-		setSearch({
-			name: '',
-			id: ''
-		})
+	const handleToggle = e => {
+		setExpandNav(e)
 	}
+	
 
     return (
         <Fragment>
-            <Title>
-                Weather <br /> App
-                <InputWrapper>
-                    <SearchInput
-                        type="text"
-                        placeholder="Search city"
-						onChange={handleChange}
-						onKeyDown={e => {
-							if(e.key === "Enter") {
-								saveCity()
-							}
-						}}
-						value={search.name}
-                    />
-                    <SearchIcon
-                        className="fas fa-search"
-                        onClick={saveCity}
-                    ></SearchIcon>
-                </InputWrapper>
-            </Title>
+           
+            <Navbar onToggle={handleToggle} expanded={expandNav} variant="dark" expand="lg">
+				<LOGO>Weather <br /> App<i className="fas fa-cloud ml-2"></i></LOGO>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Form className="ml-auto mt-4 mt-lg-0 d-flex" onSubmit={handleSubmit}>
+                        <FormControl
+                            type="text"
+                            placeholder="Search City"
+                            className="mr-2"
+							value={search}
+							onChange={handleChange}
+                        />
+                        <Button variant="dark" type="submit"><i className="fas fa-search"></i></Button>
+                    </Form>
+                </Navbar.Collapse>
+            </Navbar>
+
             {error ? <p className="error">Enter a city</p> : null}
         </Fragment>
     );

@@ -38,7 +38,7 @@ html {
 	color: white;
 }
 
-body {
-	min-height: 100vh;
-	background-color: #222a3b!important;
+.col {
+	border: solid 3px white;
+	color: white;
 }

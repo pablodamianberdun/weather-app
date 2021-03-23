@@ -29,8 +29,8 @@ const WeatherCard = ({ data }) => {
 				<ICON src={icon}/>
 			</div>
 			<div className="d-flex align-items-center justify-content-between">
-				<p>{weather[0].main}</p>
 				<p>Min: {round(main.temp_min)}º / Max: {round(main.temp_max)}º</p>
+				<p>{weather[0].main}</p>
 			</div>
         </div>
     );

@@ -6,13 +6,13 @@ const Forecast = ({ cityWeather }) => {
 
     return (
         <Container>
-            <Row>
-                <Col xs={12} md={6} className="col">
+            <Row >
+                <Col xs={12} md={6} className="col p-5 d-flex flex-row align-items-center">
 					<WeatherCard 
 						data={cityWeather}
 					/>
                 </Col>
-                <Col xs={12} md={6} className="col">
+                <Col xs={12} md={6} className="col p-5 d-flex flex-row align-items-center">
                     COLUMNA 2
                 </Col>
             </Row>

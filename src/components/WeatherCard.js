@@ -20,7 +20,7 @@ const WeatherCard = ({ data }) => {
 	}
 
     return (
-        <div>
+        <div className="w-100">
             <CITY>
                 {name}, <span>{sys.country}</span>
             </CITY>

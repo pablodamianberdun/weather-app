@@ -6,11 +6,11 @@ import axios from "axios"
 
 
 function App() {
-    const [city, setCity] = useState("");
+    const [city, setCity] = useState("weather");
     const [getApi, setGetApi] = useState(false);
     const [weather, setWeather] = useState("");
     const [error, setError] = useState(false);
-	const [img, setImg] = useState("https://cdn.pixabay.com/photo/2016/08/12/20/14/fields-1589613_960_720.jpg")
+	const [img, setImg] = useState("")
 
 	
     if (getApi) {
@@ -31,7 +31,7 @@ function App() {
 
 	useEffect( () => {
 		const getBackground = async () => {
-			const url = 'https://pixabay.com/api/?key=19949153-2db7b3c8211ebbbd16f59e64d&q=weather&category=travel&orientation=horizontal&per_page=100&image_type=photo&pretty=true'
+			const url = `https://pixabay.com/api/?key=19949153-2db7b3c8211ebbbd16f59e64d&q=${city}&category=travel&orientation=horizontal&per_page=100&image_type=photo&pretty=true`
 			const response = await axios.get(url)
 			const links = response.data.hits
 			const index = Math.floor(Math.random() * links.length)
@@ -39,7 +39,7 @@ function App() {
 			setImg(picture.largeImageURL)
 		}
 		getBackground()
-	}, [])
+	}, [city])
 
 
     return (

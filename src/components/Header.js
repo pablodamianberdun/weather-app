@@ -32,8 +32,8 @@ function Header({ setCity, setGetApi }) {
 
     return (
         <Fragment>
-           
-            <Navbar onToggle={handleToggle} expanded={expandNav} variant="dark" expand="lg">
+			
+            <Navbar onToggle={handleToggle} expanded={expandNav} variant="dark" expand="md">
 				<LOGO>Weather <br /> App<i className="fas fa-cloud ml-2"></i></LOGO>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
 

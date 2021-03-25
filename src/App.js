@@ -30,15 +30,29 @@ function App() {
     }
 
 	useEffect( () => {
-		const getBackground = async () => {
-			const url = `https://pixabay.com/api/?key=19949153-2db7b3c8211ebbbd16f59e64d&q=${city}&category=travel&orientation=horizontal&per_page=100&image_type=photo&pretty=true`
+		const getPicture = async (cityName) => {
+			const url = `https://pixabay.com/api/?key=19949153-2db7b3c8211ebbbd16f59e64d&q=${cityName}&category=travel&orientation=horizontal&per_page=100&image_type=photo&pretty=true`
 			const response = await axios.get(url)
 			const links = response.data.hits
 			const index = Math.floor(Math.random() * links.length)
-			const picture = links[index];
-			setImg(picture.largeImageURL)
+			return links[index].largeImageURL
 		}
-		getBackground()
+
+		const setBackground = async () => {
+			try {
+				const picture = await getPicture(city)
+				console.log(picture)
+				setImg(picture)
+			} catch (error) {
+				console.log("Catch");
+				const picture = await getPicture("forecast")
+				setImg(picture)
+			}
+		}
+
+		setBackground()
+
+		
 	}, [city])
 
 

@@ -15,3 +15,11 @@ export const getPicture = async (cityName) => {
     const index = Math.floor(Math.random() * links.length);
     return links[index].largeImageURL;
 };
+
+export const getForecast = async (lat, lon) => {
+	const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&lang=sp&exclude=minutely&appid=fa17ec1c7d684c94614d3a196892c3d0&units=metric`
+
+	const response = await fetch(url);
+    const data = await response.json();
+    return data;
+}

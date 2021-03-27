@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from "react";
 import Header from "./components/Header";
 import Forecast from "./components/Forecast"
 import { BACKGROUND, DATACONTAINER } from "./styles/App.styled"
-import { getWeather, getPicture } from "./services/openWeather"
+import { getWeather, getPicture, getForecast } from "./services/openWeather"
 
 
 function App() {
@@ -10,6 +10,7 @@ function App() {
     const [weather, setWeather] = useState("");
     const [error, setError] = useState(false);
 	const [img, setImg] = useState("")
+	const [forecast, setForecast] = useState("")
 
 	
     useEffect ( () => {
@@ -30,7 +31,7 @@ function App() {
 			try {
 				const picture = await getPicture(city)
 				setImg(picture)
-			} catch (error) {
+			} catch {
 				const picture = await getPicture("forecast")
 				setImg(picture)
 			}
@@ -39,6 +40,19 @@ function App() {
 		getData()
 		setBackground()
 	},[city])
+
+
+	useEffect ( () => {
+		if (weather === "") return
+
+		const getData = async () => {
+			const forecastData = await getForecast(weather.coord.lat, weather.coord.lon)
+			setForecast(forecastData)
+		}
+
+		getData()
+		
+	}, [weather])
 
 
     return (
@@ -53,7 +67,7 @@ function App() {
 					<p className="error">There was an error. Try again</p>
 				) : null}
 
-				{weather ? <Forecast cityWeather={weather}/> : null}
+				{weather ? <Forecast cityWeather={weather} forecast={forecast}/> : null}
 			</DATACONTAINER>
         </Fragment>
     );

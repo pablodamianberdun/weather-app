@@ -2,8 +2,9 @@ import React, { Fragment, useState, useEffect } from "react";
 import Header from "./components/Header";
 import DataContainer from "./components/DataContainer"
 import Error from "./components/Error"
-import { BACKGROUND, CONTAINER } from "./styles/app.styled"
+import { BGCONTAINER, BGIMAGE, CONTAINER } from "./styles/app.styled"
 import { getWeather, getPicture, getForecast } from "./services/openWeather"
+import Spinner from "./components/Spinner"
 
 
 function App() {
@@ -12,6 +13,16 @@ function App() {
     const [error, setError] = useState(false);
 	const [img, setImg] = useState("")
 	const [forecast, setForecast] = useState("")
+	const [loading, setLoading] = useState(true)
+
+
+	useEffect( () => {
+		const setDefaultBackground = async () => {
+			const picture = await getPicture("forecast")
+			setImg(picture)
+		}
+		setDefaultBackground()
+	}, [])
 
 	
     useEffect ( () => {
@@ -30,6 +41,7 @@ function App() {
 
 		const setBackground = async () => {
 			try {
+				setLoading(true)
 				const picture = await getPicture(city)
 				setImg(picture)
 			} catch {
@@ -58,7 +70,10 @@ function App() {
 
     return (
         <Fragment>
-			<BACKGROUND style={{backgroundColor: "#263A52", backgroundImage: `url(${img})`}}></BACKGROUND>
+			<BGCONTAINER>
+				<BGIMAGE src={img} onLoad={ () => setLoading(false)}/>
+			</BGCONTAINER>
+
             <CONTAINER>
 				<Header
 					title="Weather App"
@@ -68,7 +83,11 @@ function App() {
 					<Error message="There was an error. Try again"/>
 				) : null}
 
-				{weather && forecast ? (
+				{loading ? (
+					<Spinner/>
+				) : null}
+
+				{weather && forecast && !loading ? (
 					<DataContainer cityWeather={weather} forecast={forecast}/>
 				) : null}
 			</CONTAINER>

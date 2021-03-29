@@ -17,8 +17,8 @@ const DataContainer = ({ cityWeather, forecast }) => {
                         {forecast
                             ?
 							forecast.daily.map((day) => (
-                                  <div className="forecast-card m-2">
-                                      <ForecastCard key={day.datetime} timezone={forecast.timezone} forecast={day}/>
+                                  <div key={day.datetime} className="forecast-card m-2">
+                                      <ForecastCard timezone={forecast.timezone} forecast={day}/>
                                   </div>
                               ))
                             : null

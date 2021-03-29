@@ -9,7 +9,7 @@ export const getWeather = async (city) => {
 };
 
 export const getPicture = async (cityName) => {
-    const url = `https://pixabay.com/api/?key=19949153-2db7b3c8211ebbbd16f59e64d&q=${cityName}&category=travel&orientation=horizontal&per_page=100&image_type=photo&pretty=true`;
+    const url = `https://pixabay.com/api/?key=19949153-2db7b3c8211ebbbd16f59e64d&q=${cityName}&category=travel&orientation=horizontal&min_width=1900&per_page=150&image_type=photo`;
     const response = await axios.get(url);
     const links = response.data.hits;
     const index = Math.floor(Math.random() * links.length);

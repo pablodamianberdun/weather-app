@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from "react";
-import { LOGO } from "../styles/Header.styled";
+import Error from "./Error"
+import { LOGO } from "../styles/header.styled";
 import { FormControl, Button, Navbar, Form } from "react-bootstrap";
 
 function Header({ setCity }) {
@@ -59,7 +60,7 @@ function Header({ setCity }) {
                 </Navbar.Collapse>
             </Navbar>
 
-            {error ? <p className="error">Enter a city</p> : null}
+            {error ? <Error message="Enter a city."/> : null}
         </Fragment>
     );
 }

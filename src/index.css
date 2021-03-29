@@ -1,10 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
 
 html {
-	box-sizing: border-box;
-	font-family: "Open Sans", sans-serif;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
 }
 
 *,
@@ -13,32 +13,28 @@ html {
     box-sizing: inherit;
 }
 
-.container {
-    max-width: 70%;
-	margin: 0 auto;
+/* Scroll Bar Styles */
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
 }
 
-.carousel{
-	/* border: 1px solid green; */
-	display: block;
-	width: 100%;
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
 }
 
-.cards-container {
-	/* border: red solid 1px; */
-	display: flex!important;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
 }
 
-.error {
-	background-color: #DF1515;
-	padding: 10px;
-	color: white;
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
 
-.col {
-	color: white;
-	background-color: rgba(0,0,0, .3);
+.border {
+    border: 1px red solid;
 }

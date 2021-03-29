@@ -1,7 +1,8 @@
 import React, { Fragment, useState, useEffect } from "react";
 import Header from "./components/Header";
-import Forecast from "./components/Forecast"
-import { BACKGROUND, DATACONTAINER } from "./styles/App.styled"
+import DataContainer from "./components/DataContainer"
+import Error from "./components/Error"
+import { BACKGROUND, CONTAINER } from "./styles/app.styled"
 import { getWeather, getPicture, getForecast } from "./services/openWeather"
 
 
@@ -58,17 +59,19 @@ function App() {
     return (
         <Fragment>
 			<BACKGROUND style={{backgroundColor: "#263A52", backgroundImage: `url(${img})`}}></BACKGROUND>
-            <DATACONTAINER>
+            <CONTAINER>
 				<Header
 					title="Weather App"
 					setCity={setCity}
 				/>
 				{error ? (
-					<p className="error">There was an error. Try again</p>
+					<Error message="There was an error. Try again"/>
 				) : null}
 
-				{weather ? <Forecast cityWeather={weather} forecast={forecast}/> : null}
-			</DATACONTAINER>
+				{weather && forecast ? (
+					<DataContainer cityWeather={weather} forecast={forecast}/>
+				) : null}
+			</CONTAINER>
         </Fragment>
     );
 }

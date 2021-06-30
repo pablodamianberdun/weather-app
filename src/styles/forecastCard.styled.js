@@ -11,6 +11,7 @@ export const CARD = styled.div`
 	min-width: 100px;
 	background-color: rgba(0, 0, 0, .5);
 	border-radius: 10px;
+	margin: 10px;
 `
 
 export const ICON = styled.img`

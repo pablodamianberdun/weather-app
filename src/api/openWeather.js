@@ -1,5 +1,3 @@
-import axios from "axios";
-
 export const getWeather = async (city) => {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=fa17ec1c7d684c94614d3a196892c3d0`;
 
@@ -8,13 +6,6 @@ export const getWeather = async (city) => {
     return data;
 };
 
-export const getPicture = async (cityName) => {
-    const url = `https://pixabay.com/api/?key=19949153-2db7b3c8211ebbbd16f59e64d&q=${cityName}&category=travel&orientation=horizontal&min_width=1900&per_page=150&image_type=photo`;
-    const response = await axios.get(url);
-    const links = response.data.hits;
-    const index = Math.floor(Math.random() * links.length);
-    return links[index].largeImageURL;
-};
 
 export const getForecast = async (lat, lon) => {
 	const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&lang=sp&exclude=minutely&appid=fa17ec1c7d684c94614d3a196892c3d0&units=metric`
